@@ -16,6 +16,7 @@ clean:
 	rm -r $(ALL)
 
 check:
-	flake8 scr/*.py
+	flake8 $(GENERATORS)
+	mypy --strict $(GENERATORS)
 
 .PHONY: all clean check
