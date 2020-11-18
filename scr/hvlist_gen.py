@@ -39,6 +39,12 @@ def generate_owners(hvs: HVs) -> str:
     return result
 
 
+def git_head_id(path: str = '.') -> str:
+    return subprocess.check_output(
+        ['git', 'rev-parse', '--short', 'HEAD'], cwd=path,
+    ).strip().decode('utf-8')
+
+
 def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
                  hvs: HVs, hvlist_path: str) -> None:
     index_text = index_t.read()
@@ -57,11 +63,10 @@ def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
         datetime.datetime.now().strftime("%-d. %-m. %Y %H:%M")
     )
 
-    head_id = subprocess.check_output(
-        ['git', 'rev-parse', '--short', 'HEAD'],
-        cwd=hvlist_path,
-    ).strip().decode('utf-8')
-    index_text = index_text.replace('{{git_head}}', head_id)
+    index_text = index_text.replace('{{git_head_db}}',
+                                    git_head_id(hvlist_path))
+    index_text = index_text.replace('{{git_head_web}}', git_head_id())
+
     index_text = index_text.replace('{{owners}}', generate_owners(hvs))
 
     output.write(index_text.replace('{{hvs}}', hvs_text))
