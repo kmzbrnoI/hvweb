@@ -11,7 +11,7 @@ SHELL := /bin/bash
 
 all: $(ALL)
 
-build/index.html: $(TEMPLATES) $(GENERATORS) $(HVS)
+build/index.html: $(TEMPLATES) $(GENERATORS) $(HVS_DIR)
 	source hvwww-venv/bin/activate && ./scr/hvlist_gen.py $(HVS_DIR) -o $@
 
 clean:
