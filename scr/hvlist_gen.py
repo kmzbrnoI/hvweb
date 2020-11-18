@@ -22,6 +22,8 @@ HVs = Dict[int, HV]
 TEMPLATE_HV_FN = 'templates/hv.html'
 TEMPLATE_INDEX_FN = 'templates/index.html'
 
+HV_CLASS_CAR = 4
+
 
 def generate_owners(hvs: HVs) -> str:
     owners: Dict[str, List[HV]] = {}
@@ -55,6 +57,11 @@ def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
         hv_text_spec = hv_text
         for key, val in hv.items():
             hv_text_spec = hv_text_spec.replace('{{' + key + '}}', val)
+        if hv['trida'] == HV_CLASS_CAR:
+            class_ = 'car'
+        else:
+            class_ = ''
+        hv_text_spec = hv_text_spec.replace('{{trclass}}', class_)
         hvs_text += hv_text_spec + '\n'
 
     index_text = index_text.replace('{{total}}', str(len(hvs)))
