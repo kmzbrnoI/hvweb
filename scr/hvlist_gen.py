@@ -78,8 +78,8 @@ if __name__ == '__main__':
         config = configparser.ConfigParser()
         config.read(filename, encoding='utf-8-sig')
         sections = config.sections()
-        assert 'global' in sections
-        assert config['global']['version'] == '2.0'
+        assert 'global' in sections, f'{filename}'
+        assert config['global']['version'] == '2.0', f'{filename}'
         sections.remove('global')
 
         for addr in sections:
