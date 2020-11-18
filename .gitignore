@@ -6,3 +6,4 @@ build/deploy-token.php
 hvs
 hvsrepo
 .mypy_cache
+hvwww-venv

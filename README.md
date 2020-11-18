@@ -3,10 +3,11 @@
 ## Deployment
 
  1. `$ git clone --recurse-submodules https://github.com/kmzbrnoI/hvweb`
- 2. Add directory with engines to `lok`.
- 3. `$ mase all`
- 4. Serve webserver in `build` directory.
- 5. Remake when database changed.
+ 2. Install Python packages.
+ 3. Add directory with engines to `lok`.
+ 4. `$ mase all`
+ 5. Serve webserver in `build` directory.
+ 6. Remake when database changed.
 
 ## Github autodeploy on push
 
