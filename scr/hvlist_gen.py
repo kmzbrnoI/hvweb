@@ -15,6 +15,8 @@ import glob
 import sys
 import datetime
 import subprocess
+import codecs
+import os
 
 HV = Dict[str, str]
 HVs = Dict[int, HV]
@@ -23,6 +25,13 @@ TEMPLATE_HV_FN = 'templates/hv.html'
 TEMPLATE_INDEX_FN = 'templates/index.html'
 
 HV_CLASS_CAR = 4
+
+
+def encoding_bom(filename: str) -> str:
+    bytes_ = min(32, os.path.getsize(filename))
+    with open(filename, 'rb') as f:
+        raw = f.read(bytes_)
+    return 'utf-8-sig' if raw.startswith(codecs.BOM_UTF8) else 'utf-8'
 
 
 def generate_owners(hvs: HVs) -> str:
@@ -57,7 +66,7 @@ def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
         hv_text_spec = hv_text
         for key, val in hv.items():
             hv_text_spec = hv_text_spec.replace('{{' + key + '}}', val)
-        if hv['trida'] == HV_CLASS_CAR:
+        if int(hv['trida']) == HV_CLASS_CAR:
             class_ = 'car'
         else:
             class_ = ''
@@ -88,7 +97,7 @@ if __name__ == '__main__':
     hvs: HVs = {}
     for filename in glob.glob(args['<hvlist_directory_path>'] + '/*.2lok'):
         config = configparser.ConfigParser()
-        config.read(filename, encoding='utf-8-sig')
+        config.read(filename, encoding=encoding_bom(filename))
         sections = config.sections()
         assert 'global' in sections, f'{filename}'
         assert config['global']['version'] == '2.0', f'{filename}'
