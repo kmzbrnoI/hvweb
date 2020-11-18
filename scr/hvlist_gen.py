@@ -13,6 +13,8 @@ from docopt import docopt
 from typing import Dict, TextIO
 import glob
 import sys
+import datetime
+import subprocess
 
 HV = Dict[str, str]
 HVs = Dict[int, HV]
@@ -22,7 +24,7 @@ TEMPLATE_INDEX_FN = 'templates/index.html'
 
 
 def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
-                 hvs: HVs) -> None:
+                 hvs: HVs, hvlist_path: str) -> None:
     index_text = index_t.read()
     hv_text = hv_t.read()
     hvs_text = ''
@@ -32,6 +34,18 @@ def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
         for key, val in hv.items():
             hv_text_spec = hv_text_spec.replace('{{' + key + '}}', val)
         hvs_text += hv_text_spec + '\n'
+
+    index_text = index_text.replace('{{total}}', str(len(hvs)))
+    index_text = index_text.replace(
+        '{{last_updated}}',
+        datetime.datetime.now().strftime("%-d. %-m. %Y %H:%M")
+    )
+
+    head_id = subprocess.check_output(
+        ['git', 'rev-parse', '--short', 'HEAD'],
+        cwd=hvlist_path,
+    ).strip().decode('utf-8')
+    index_text = index_text.replace('{{git_head}}', head_id)
 
     output.write(index_text.replace('{{hvs}}', hvs_text))
 
@@ -58,6 +72,8 @@ if __name__ == '__main__':
 
     with open(TEMPLATE_HV_FN, 'r', encoding='utf-8') as hv_t, \
             open(TEMPLATE_INDEX_FN, 'r', encoding='utf-8') as index_t:
-        generate_hvs(index_t, hv_t, output, hvs)
+        generate_hvs(
+            index_t, hv_t, output, hvs, args['<hvlist_directory_path>']
+        )
 
     # ofn will be closed automatically here
