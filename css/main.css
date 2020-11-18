@@ -13,6 +13,10 @@ p {
     margin-bottom: 10px;
 }
 
+a {
+    color: #055925;
+}
+
 a:hover {
     text-decoration: none;
     color: red;
@@ -29,12 +33,11 @@ strong {
 
 table {
     border-collapse: collapse;
-    margin: auto;
+    margin: 20px auto;
 }
 
 table, th, td {
     border-bottom: 1px solid black;
-
 }
 
 th, td {

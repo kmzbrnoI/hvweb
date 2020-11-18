@@ -18,6 +18,9 @@
  <body>
   <img id="logo" src="/static/logo.svg" height="55" width="55" />
   <h1>Databáze hnacích vozidel H0 Mosilana KMŽ Brno I</h1>
+  <p>Toto je autoritativní seznam všech hnacích vozidel hJOP Mosilana velké
+  kolejiště H0. Automaticky se upravuje podle aktuálního seznamu vozidel na
+  serveru. Více informací na konci stránky.</p>
 
   <table>
     <tr>
@@ -25,15 +28,22 @@
      <th>Název</th>
      <th>Majitel</th>
      <th>Označení</th>
+     <th>Všechna data</th>
     </tr>
 
     {{hvs}}
   </table>
 
+
+  <p>Nová hnací vozidla přidávejte buď přímo na serveru (když je Mosilana
+  v provozu) nebo přes formulář níže.
+  Formulář zpracovává člověk.</p>
+  <p>Do tabulky migrace z MyJOP nepřidávejte nová hnací vozidla. Jakmile budou všechna
+  vozidla zmigrovaná z hJOP, tabulka bude archivována.</p>
   <div class="center">
+  <a class="button" href="">Přidat nové HV</a>
   <a class="button" href="https://docs.google.com/spreadsheets/d/1swcLnxVevWl75PusxUt3AfU7PvO8if37Z-sL-gYAPC8/edit">Tabulka migrace z MyJOP</a>
-  <p>Do této tabulky prosím nepřidávejte nová hnací vozidla. Jakmile budou všechna
-  vozidla zmigrovaná z hJOP, tabulka pozbude svého smyslu.</p>
+  <a class="button" href="/hvs/">Podrobná data HV</a>
   </div>
   <hr />
   <div id="footer">
