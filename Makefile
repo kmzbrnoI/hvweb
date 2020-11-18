@@ -10,7 +10,7 @@ ALL=$(patsubst %,build/%,$(ALL_FILES))
 all: $(ALL)
 
 build/index.html: $(TEMPLATES) $(GENERATORS) $(HVS)
-	./scr/hvlist_gen.py -o $@ -l $(HVS_DIR)
+	./scr/hvlist_gen.py $(HVS_DIR) -o $@
 
 clean:
 	rm -r $(ALL)
