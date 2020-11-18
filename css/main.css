@@ -8,6 +8,11 @@ body {
     padding-right: 20px;
 }
 
+p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 a:hover {
     text-decoration: none;
     color: red;
@@ -42,4 +47,21 @@ th {
 
 #footer {
     font-size: 75%;
+}
+
+.button {
+    background-color: #055925;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
 }
