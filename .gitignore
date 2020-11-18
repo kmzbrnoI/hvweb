@@ -2,5 +2,6 @@
 __pycache__
 *.pyc
 build/*.html
+build/deploy-token.php
 hvs
 .mypy_cache
