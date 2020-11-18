@@ -10,7 +10,7 @@ Usage:
 
 import configparser
 from docopt import docopt
-from typing import Dict, TextIO
+from typing import Dict, List, TextIO
 import glob
 import sys
 import datetime
@@ -21,6 +21,22 @@ HVs = Dict[int, HV]
 
 TEMPLATE_HV_FN = 'templates/hv.html'
 TEMPLATE_INDEX_FN = 'templates/index.html'
+
+
+def generate_owners(hvs: HVs) -> str:
+    owners: Dict[str, List[HV]] = {}
+    for hv in hvs.values():
+        if hv['majitel'] not in owners:
+            owners[hv['majitel']] = []
+        owners[hv['majitel']].append(hv)
+
+    result = ''
+    own_sorted = sorted(owners.items(),
+                        key=lambda owner_hvs: -len(owner_hvs[1]))
+    for owner, hvs in own_sorted:
+        result += f'<li>{owner}: {len(hvs)}</li>\n'
+
+    return result
 
 
 def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
@@ -46,6 +62,7 @@ def generate_hvs(index_t: TextIO, hv_t: TextIO, output: TextIO,
         cwd=hvlist_path,
     ).strip().decode('utf-8')
     index_text = index_text.replace('{{git_head}}', head_id)
+    index_text = index_text.replace('{{owners}}', generate_owners(hvs))
 
     output.write(index_text.replace('{{hvs}}', hvs_text))
 
