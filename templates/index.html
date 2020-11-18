@@ -16,6 +16,7 @@
  </head>
 
  <body>
+  <img id="logo" src="/static/logo.svg" height="55" width="55" />
   <h1>Databáze hnacích vozidel H0 Mosilana KMŽ Brno I</h1>
 
   <table>
@@ -30,8 +31,10 @@
   </table>
 
   <hr />
-  <p>Celkem vozidel: {{total}} <br />
-  Poslední aktualizace: {{last_updated}} <br />
-  Git HEAD id: {{git_head}}</p>
+  <div id="footer">
+   <p>Celkem vozidel: {{total}} <br />
+   Poslední aktualizace: {{last_updated}} <br />
+   Git HEAD id: {{git_head}}</p>
+  </div>
  </body>
 </html>

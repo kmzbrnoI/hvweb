@@ -1,7 +1,45 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+body {
     font-family: sans-serif;
+    max-width: 800px;
+    min-width: 200px;
+    margin: auto;
+    font-size: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: red;
+}
+
+#logo {
+    float:right;
+}
+
+strong {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+table, th, td {
+    border-bottom: 1px solid black;
+
+}
+
+th, td {
+    padding: 5px 10px;
+}
+
+th {
+    background-color: #dddddd;
+}
+
+#footer {
+    font-size: 75%;
 }
