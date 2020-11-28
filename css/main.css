@@ -72,3 +72,7 @@ th {
     margin: auto;
     text-align: center;
 }
+
+.ta-right {
+    text-align: right;
+}
