@@ -22,7 +22,7 @@ HV = Dict[str, str]
 HVs = Dict[int, HV]
 
 TEMPLATE_HV_FN = 'templates/hv.html'
-TEMPLATE_INDEX_FN = 'templates/index.html'
+TEMPLATE_INDEX_FN = 'templates/hvs.html'
 
 HV_CLASS_CAR = 4
 

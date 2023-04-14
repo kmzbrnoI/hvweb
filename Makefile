@@ -4,14 +4,14 @@ GENERATORS=$(wildcard scr/*.py)
 HVS_DIR=hvs
 HVS=$(wildcard $(LOKS_DIR)/*.2lok)
 
-ALL_FILES=index.html
+ALL_FILES=hvs.html
 ALL=$(patsubst %,build/%,$(ALL_FILES))
 
 SHELL := /bin/bash
 
 all: $(ALL)
 
-build/index.html: $(TEMPLATES) $(GENERATORS) $(HVS_DIR)
+build/hvs.html: $(TEMPLATES) $(GENERATORS) $(HVS_DIR)
 	source hvwww-venv/bin/activate && ./scr/hvlist_gen.py $(HVS_DIR) -o $@
 
 clean:
