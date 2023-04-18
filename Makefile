@@ -1,18 +1,17 @@
-TEMPLATES_DIR=templates
-TEMPLATES=$(wildcard $(TEMPLATES_DIR)/*.html)
 GENERATORS=$(wildcard scr/*.py)
-HVS_DIR=hvs
-HVS=$(wildcard $(LOKS_DIR)/*.2lok)
 
-ALL_FILES=hvs.html
+ALL_FILES=hvs.html users.html
 ALL=$(patsubst %,build/%,$(ALL_FILES))
 
 SHELL := /bin/bash
 
 all: $(ALL)
 
-build/hvs.html: $(TEMPLATES) $(GENERATORS) $(HVS_DIR)
-	source hvwww-venv/bin/activate && ./scr/hvlist_gen.py $(HVS_DIR) -o $@
+build/hvs.html: templates/hv.html templates/hvs.html scr/hvlist_gen.py hvs
+	source hvwww-venv/bin/activate && ./scr/hvlist_gen.py hvs -o $@
+
+build/users.html: templates/users.html scr/users_gen.py data
+	source hvwww-venv/bin/activate && ./scr/users_gen.py data/users.ini -o $@
 
 clean:
 	rm -r $(ALL)
