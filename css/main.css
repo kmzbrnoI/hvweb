@@ -1,11 +1,18 @@
 body {
     font-family: sans-serif;
-    max-width: 800px;
     min-width: 200px;
     margin: auto;
     font-size: 100%;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+body.hvs {
+    max-width: 800px;
+}
+
+body.users {
+    max-width: 1200px;
 }
 
 p {
@@ -75,4 +82,8 @@ th {
 
 .ta-right {
     text-align: right;
+}
+
+td.wr {
+    background-color: #FFFFCC;
 }

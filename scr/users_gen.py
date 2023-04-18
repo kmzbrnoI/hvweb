@@ -49,6 +49,11 @@ def user(user: Dict[str, str], output, areas) -> str:
     result = '<tr>\n'
     result += f'<td>{user.name}</td>\n'
     result += f'<td>{user.get("fname", "")} {user.get("lname", "")}</td>\n'
+    if user.get('reg', '0') == '1':
+        result += '<td class="wr center">ano</td>\n'
+    else:
+        result += '<td class="center">ne</td>\n'
+    result += f'<td class="center">{"ano" if user.get("ban", "0") == "1" else "ne"}</td>\n'
 
     rights = {}
     if 'ORs' in user:
@@ -59,14 +64,15 @@ def user(user: Dict[str, str], output, areas) -> str:
                 rights[splitted[0]] = int(splitted[1])
 
     for area_id in areas:
-        result += '<td>'
         if area_id in rights:
             if rights[area_id] == 1:
-                result += 'R'
+                result += '<td class="center">R'
             elif rights[area_id] == 2:
-                result += 'W'
+                result += '<td class="center wr">W'
             else:
-                result += str(rights[area_id])
+                result += '<td class="center">'+str(rights[area_id])
+        else:
+            result += '<td>'
         result += '</td>\n'
 
     result += '</tr>\n'
@@ -88,6 +94,8 @@ if __name__ == '__main__':
     content += '<table>\n<tr>\n'
     content += '<th>Uživatelské jméno</th>\n'
     content += '<th>Jméno</th>\n'
+    content += '<th>Ruční řízení</th>\n'
+    content += '<th>Ban</th>\n'
     for area_id in area_ids:
         content += f'<th>{area_id}</th>'
 
@@ -107,6 +115,7 @@ if __name__ == '__main__':
     template = template.replace('{{git_head_db}}',
                                 git_head_id(os.path.dirname(ini_filename)))
     template = template.replace('{{git_head_web}}', git_head_id())
+    template = template.replace('{{total}}', str(len(config.sections())))
     output.write(template)
 
     # ofn will be closed automatically here
