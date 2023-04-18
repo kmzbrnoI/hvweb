@@ -1,12 +1,12 @@
-# Public webpage with list of engines in hJOPserver
+# Public webpage with list of engines & users in hJOPserver
 
 ## Deployment
 
  1. `$ git clone --recurse-submodules https://github.com/kmzbrnoI/hvweb`
  2. Optional: setup virtualenv.
  3. Install Python packages from `requirements.txt`.
- 4. Add directory with engines to `lok`.
-    - The directory is usually a symlink to `lok` subfolder of `hJOPserverConfig`
+ 4. Add directory with engines to `lok`, add link to hJOPserver's `data` into `data` directory.
+    - The directory is usually a symlink to `lok`/`data` subfolder of `hJOPserverConfig`
       repository. The repository is either somewhere else in your filesystem or
       you can clone it to `hvsrepo` directory in this repository (this folder
       is gitignored). This is suitable for deployment.

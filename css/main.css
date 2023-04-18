@@ -87,3 +87,11 @@ th {
 td.wr {
     background-color: #FFFFCC;
 }
+
+td.ruc {
+    background-color: #FFFFCC;
+}
+
+tr.ban {
+    background-color: #FFCCCC;
+}

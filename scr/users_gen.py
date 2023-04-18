@@ -46,14 +46,16 @@ def areas(config) -> List[str]:
 
 
 def user(user: Dict[str, str], output, areas) -> str:
-    result = '<tr>\n'
+    ban = user.get('ban', '0') == '1'
+
+    result = f'<tr class="{"ban" if ban else ""}">\n'
     result += f'<td>{user.name}</td>\n'
     result += f'<td>{user.get("fname", "")} {user.get("lname", "")}</td>\n'
     if user.get('reg', '0') == '1':
-        result += '<td class="wr center">ano</td>\n'
+        result += '<td class="ruc center">ano</td>\n'
     else:
         result += '<td class="center">ne</td>\n'
-    result += f'<td class="center">{"ano" if user.get("ban", "0") == "1" else "ne"}</td>\n'
+    result += f'<td class="center">{"ano" if ban else "ne"}</td>\n'
 
     rights = {}
     if 'ORs' in user:
