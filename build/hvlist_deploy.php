@@ -19,7 +19,7 @@ define("LOGFILE", "/dev/null");
 define("GIT", "git");
 define("MAX_EXECUTION_TIME", 15);
 define("BEFORE_PULL", "git reset --hard @{u}");
-define("AFTER_PULL", "cd .. && make all");
+define("AFTER_PULL", "cd ../.. && make all");
 
 require("git-deploy/deployer.php");
 ?>
