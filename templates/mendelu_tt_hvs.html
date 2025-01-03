@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="cs">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <meta name="description" content="Databáze hnacích vozidel TT MENDELU KMŽ Brno I.">
+  <meta name="author" content="Honza Horáček">
+  <meta name="robots" content="noindex,nofollow">
+
+  <title>Databáze hnacích vozidel modulovky TT KMŽ Brno I</title>
+ </head>
+
+ <body class="hvs">
+  <img id="logo" src="/static/logo.svg" height="55" width="55" />
+  <h1>Databáze hnacích vozidel modulovky TT KMŽ Brno I</h1>
+  <p><a href="..">Zpět na rozcestník</a>
+  <p>Toto je seznam všech hnacích vozidel hJOP MENDELU modulovka TT.
+  Tato stránka se generuje přímo z databáze hJOPserveru. Krátkodobý nesoulad
+  této stránky a databáze hJOPserveru je možný, autoritativní je vždy databáze
+  hJOPserveru. Více informací na konci stránky.</p>
+
+  <table>
+    <tr>
+     <th>Adresa</th>
+     <th>Název</th>
+     <th>Majitel</th>
+     <th>Označení</th>
+     <th>Funkcí</th>
+     <th>Všechna data</th>
+    </tr>
+
+    {{hvs}}
+  </table>
+
+
+  <p>Nová hnací vozidla přidávejte <strong>přímo do hJOP na MENDELU</strong>.</p>
+  <div class="center">
+  <a class="button" target="_blank" href="lok/">Podrobná data HV</a>
+  </div>
+  <p>Našli jste v tabulce chybu, potřebujete něco upravit? Proveďte úpravu
+  přímo na MENDELU nebo napište Honzovi Horáčkovi.</p>
+  <hr />
+  <h2>Přehled vlastníků</h2>
+  <p>V tomto přehledu by neměly být žádné duplicity.</p>
+
+  <ol>
+  {{owners}}
+  </ol>
+
+  <hr />
+  <div id="footer">
+   <p>Celkem vozidel: {{total}} <br />
+   Poslední aktualizace: {{last_updated}} <br />
+   Git HEAD <a href="https://github.com/kmzbrnoI/hJOPserverConfig" target="_blank">hJOP databáze</a> (přístupné po přihlášení): {{git_head_db}} <br />
+   Git HEAD <a href="https://github.com/kmzbrnoI/hvweb" target="_blank">webu</a>: {{git_head_web}}</p>
+  </div>
+ </body>
+</html>

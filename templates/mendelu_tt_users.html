@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+
+  <meta name="description" content="Databáze hnacích vozidel TT MENDELU KMŽ Brno I.">
+  <meta name="author" content="Honza Horáček">
+  <meta name="robots" content="noindex,nofollow">
+
+  <title>Databáze uživatelů modulovky TT KMŽ Brno I</title>
+ </head>
+
+ <body class="users">
+  <img id="logo" src="/static/logo.svg" height="55" width="55" />
+  <h1>Databáze uživatelů modulovky TT KMŽ Brno I</h1>
+  <p><a href="..">Zpět na rozcestník</a>
+  <p>Toto je seznam všech uživatelů hJOP MENDELU modulovka TT.
+  Tato stránka se generuje přímo z databáze hJOPserveru. Krátkodobý nesoulad
+  této stránky a databáze hJOPserveru je možný, autoritativní je vždy databáze
+  hJOPserveru. Více informací na konci stránky.</p>
+
+  {{users_table}}
+
+  R = právo k pozorování (= ke čtení = Read) <br />
+  W = právo k řízení (= k zápisu = Write)
+
+  <p>Našli jste v tabulce chybu? Napište Honzovi Horáčkovi.</p>
+
+  <hr />
+  <div id="footer">
+   <p>Celkem uživatelů: {{total}} <br />
+   Poslední aktualizace: {{last_updated}} <br />
+   Git HEAD <a href="https://github.com/kmzbrnoI/hJOPserverConfig" target="_blank">hJOP databáze</a> (přístupné po přihlášení): {{git_head_db}} <br />
+   Git HEAD <a href="https://github.com/kmzbrnoI/hvweb" target="_blank">webu</a>: {{git_head_web}}</p>
+  </div>
+ </body>
+</html>

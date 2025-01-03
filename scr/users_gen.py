@@ -5,7 +5,7 @@ This file generates a single html page with list of users.
 When no output file is defined, output is written to stdout.
 
 Usage:
-  usess_gen.py <users_ini_filename> [-o <output_filename>]
+  usess_gen.py <html_template> <users_ini_filename> [-o <output_filename>]
 """
 
 import configparser
@@ -16,8 +16,6 @@ import datetime
 import subprocess
 import codecs
 import os
-
-TEMPLATE_INDEX_FN = 'templates/users.html'
 
 
 def encoding_bom(filename: str) -> str:
@@ -106,7 +104,7 @@ if __name__ == '__main__':
 
     content += '</tr>\n</table>\n'
 
-    with open(TEMPLATE_INDEX_FN, 'r', encoding='utf-8') as index_t:
+    with open(args['<html_template>'], 'r', encoding='utf-8') as index_t:
         template = index_t.read()
 
     template = template.replace('{{users_table}}', content)

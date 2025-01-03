@@ -5,7 +5,7 @@ This file generates a single html page with list of locomotives.
 When no output file is defined, output is written to stdout.
 
 Usage:
-  hvlist_gen.py <hvlist_directory_path> [-o <output_filename>]
+  hvlist_gen.py <hvs_template> <hvlist_directory_path> [-o <output_filename>]
 """
 
 import configparser
@@ -22,7 +22,6 @@ HV = Dict[str, str]
 HVs = Dict[int, HV]
 
 TEMPLATE_HV_FN = 'templates/hv.html'
-TEMPLATE_INDEX_FN = 'templates/hvs.html'
 
 HV_CLASS_CAR = 4
 
@@ -116,7 +115,7 @@ if __name__ == '__main__':
             hvs[int(addr)]['adresa'] = addr
 
     with open(TEMPLATE_HV_FN, 'r', encoding='utf-8') as hv_t, \
-            open(TEMPLATE_INDEX_FN, 'r', encoding='utf-8') as index_t:
+            open(args['<hvs_template>'], 'r', encoding='utf-8') as index_t:
         generate_hvs(
             index_t, hv_t, output, hvs, args['<hvlist_directory_path>']
         )

@@ -1,10 +1,8 @@
 *.swp
 __pycache__
 *.pyc
-build/*.html
+build/*/*.html
 build/deploy-token.php
-hvs
-hvsrepo
 .mypy_cache
 hvwww-venv
-data
+serverRepos
