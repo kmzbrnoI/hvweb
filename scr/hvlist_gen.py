@@ -106,7 +106,7 @@ if __name__ == '__main__':
         config.read(filename, encoding=encoding_bom(filename))
         sections = config.sections()
         assert 'global' in sections, f'{filename}'
-        assert config['global']['version'] == '2.0', f'{filename}'
+        assert config['global']['version'] in ['2.0', '2.1'], f'{filename}'
         sections.remove('global')
 
         for addr in sections:
