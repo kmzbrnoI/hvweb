@@ -3,7 +3,7 @@ require_once("deploy-token.php");
 
 define("REMOTE_REPOSITORY", "https://github.com/kmzbrnoI/hJOPserverConfig");
 define("DIR", "../serverRepos/dukelska-h0");
-define("BRANCH", "refs/heads/mosilana-h0");
+define("BRANCH", "refs/heads/dukelska-h0");
 define("LOGFILE", "/dev/null");
 define("GIT", "git");
 define("MAX_EXECUTION_TIME", 15);

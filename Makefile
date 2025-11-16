@@ -32,7 +32,7 @@ check:
 init:  # Initialize serverRepos in clean repository
 	mkdir serverRepos
 	git clone git@github.com:kmzbrnoI/hJOPserverConfig serverRepos/dukelska-h0
-	cd serverRepos/dukelska-h0 && git checkout mosilana-h0
+	cd serverRepos/dukelska-h0 && git checkout dukelska-h0
 	git clone git@github.com:kmzbrnoI/hJOPserverConfig serverRepos/mendelu-tt
 	cd serverRepos/mendelu-tt && git checkout mendelu-tt
 
